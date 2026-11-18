@@ -36,14 +36,16 @@ body {
   margin-bottom: 10px;
 }
 
+
 /* category filter */
 .search-section {
   margin: 30px 0;
   display: flex;
+  gap: 12px;
 }
 
 .search-section select {
-  width: 100%;
+  flex: 1;
   padding: 16px;
   font-size: 18px;
   border: 2px solid #000;
@@ -51,6 +53,28 @@ body {
   cursor: pointer;
   background-color: white;
   font-weight: 500;
+}
+
+.search-section input {
+  flex: 1;
+  min-width: 0;
+  padding: 16px;
+  font-size: 18px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: white;
+  font-weight: 500;
+}
+
+.search-section input:focus {
+  outline: none;
+  border-color: #666;
+}
+
+@media (max-width: 600px) {
+  .search-section {
+    flex-direction: column;
+  }
 }
 
 .search-section select:focus {
@@ -79,6 +103,24 @@ body {
   overflow-y: auto;
   background: #fafafa;
   margin-bottom: 20px;
+}
+
+.chat-message {
+  max-width: 85%;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+}
+
+.ai-message {
+  background: #eee;
+}
+
+.user-message {
+  margin-left: auto;
+  background: #000;
+  color: #fff;
 }
 
 /* placeholder message */
@@ -179,6 +221,7 @@ body {
 }
 
 .product-card {
+  position: relative;
   flex: 0 1 calc(33.333% - 14px);
   border: 1px solid #ccc;
   padding: 15px;
@@ -186,6 +229,45 @@ body {
   display: flex;
   gap: 15px;
   min-height: 160px;
+  cursor: pointer;
+  transition: border 0.2s, background-color 0.2s;
+}
+
+.product-card:hover {
+  border-color: #000;
+}
+
+.product-card:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.product-card.selected {
+  border: 2px solid #000;
+  background-color: #f2f2f2;
+}
+
+.product-description {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px;
+  border-radius: 0 0 4px 4px;
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.product-card:hover .product-description,
+.product-card:focus .product-description {
+  opacity: 1;
+  visibility: visible;
 }
 
 .product-card img {
@@ -230,6 +312,34 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.selected-placeholder {
+  color: #666;
+  font-size: 14px;
+}
+
+.selected-product {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.remove-product {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .generate-btn {
